@@ -21,7 +21,7 @@ const AllPayments = () => {
 
       <div className="w-full p-5 rounded-2xl">
         <table className="w-full border border-gray-300 text-sm md:block">
-          <thead className="bg-gray-200 md:table-header-group hidden md:block">
+          <thead className="bg-gray-200 md:table-header-group hidden ">
             <tr className="h-16">
               <th className="px-4 py-2 text-left font-semibold text-gray-700">User Name</th>
               <th className="px-4 py-2 text-left font-semibold text-gray-700">Course Name</th>
