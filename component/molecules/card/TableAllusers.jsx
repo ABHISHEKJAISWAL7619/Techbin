@@ -24,7 +24,7 @@ const TableAllusers = () => {
             {users.map((user, index) => (
               <tr
                 key={index}
-                className="block md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0"
+                className="block md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0 h-16 "
               >
                 <td className="px-4 py-2 md:table-cell block">
                   <span className="md:hidden font-semibold text-gray-700">User Name: </span>
