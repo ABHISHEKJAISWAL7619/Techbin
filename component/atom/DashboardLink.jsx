@@ -27,13 +27,13 @@ const DashboardLink = ({
             onClick={toggleSubMenu}
             className={`${
               active
-                ? "bg-blue-100 text-gray-600"
-                : "bg-transparent text-gray-400"
-            } flex w-full flex-row items-center justify-between rounded-md px-3 py-2.5 transition-all duration-200 hover:bg-blue-50 hover:text-gray-600`}
+                ? "bg-blue-100 text-[#0078D4]"
+                : "bg-transparent text-gray-600"
+            } flex w-full flex-row items-center justify-between rounded-md px-3 py-2.5 transition-all duration-200 hover:bg-blue-50 hover:text-gray-600`} 
           >
-            <span className="text-md flex items-center gap-1.5">
+            <span className="text-md flex items-center gap-3">
               <i className={`${heroIcon}`}></i>
-              <span className="text-sm font-medium capitalize">{label}</span>
+              <span className="text-lg font-medium capitalize">{label}</span>
             </span>
             {subMenu.length > 0 && (
               <span className="text-sm font-medium capitalize">
@@ -73,3 +73,4 @@ const DashboardLink = ({
 };
 
 export default DashboardLink;
+

@@ -27,7 +27,7 @@ export default function MainLayout({ children, pageTitle }) {
           setIsSidebarOpen={setIsSidebarOpen}
         />
 
-        <main className="max-w-[100vw] flex-1 overflow-y-auto p-4">
+        <main className="max-w-[100vw] bg-[#F9FAFB] flex-1 overflow-y-auto p-4">
           {children}
         </main>
       </div>

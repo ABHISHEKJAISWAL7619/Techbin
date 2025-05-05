@@ -19,6 +19,15 @@
   }
 }
 
+@layer utilities {
+  table th:first-child{
+    @apply rounded-l-xl
+  }
+  table th:last-child{
+    @apply rounded-e-xl
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
