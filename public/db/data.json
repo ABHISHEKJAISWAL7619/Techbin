@@ -1,0 +1,25 @@
+{
+    "navigation": [
+      {
+        "icon": "ri-dashboard-horizontal-fill",
+        "route": "/",
+        "label": "dashboard"
+      },
+      {
+        "icon": "ri-group-line",
+        "route": "/all-users",
+        "label": "All Users"
+      },
+      { 
+        "icon": " ri-chat-download-line",
+        "route": "/all-courses",
+        "label": "All Cources"
+      },
+      {  
+        "icon": "ri-money-rupee-circle-line",
+        "route": "/all-payments",
+        "label": "Payment History"
+      }
+      
+    ]
+  }
