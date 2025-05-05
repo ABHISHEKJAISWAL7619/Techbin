@@ -15,7 +15,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     <div
       className={`fixed inset-y-0  left-0 p-9 z-30 transform bg-white shadow transition-transform duration-300 md:relative md:translate-x-0 ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } w-64 md:w-96 xl:w-96`}
+      } w-64 md:w-96 xl:w-80`}
     >
       <nav className="flex h-full flex-col gap-7 py-4">
         <div className="flex px-4">
