@@ -20,8 +20,8 @@ const AllPayments = () => {
       </div>
 
       <div className="w-full p-5 rounded-2xl">
-        <table className="w-full border border-gray-300 text-sm">
-          <thead className="bg-gray-200 md:table-header-group hidden">
+        <table className="w-full border border-gray-300 text-sm md:block">
+          <thead className="bg-gray-200 md:table-header-group hidden md:block">
             <tr className="h-16">
               <th className="px-4 py-2 text-left font-semibold text-gray-700">User Name</th>
               <th className="px-4 py-2 text-left font-semibold text-gray-700">Course Name</th>
@@ -30,9 +30,8 @@ const AllPayments = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-
             {/* Row 1 */}
-            <tr className="h-16 block md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0">
+            <tr className="h-16 block md:table-row border border-gray-200 rounded-md mb-4 md:mb-0 p-4 md:p-0">
               <td className="px-4 py-2 md:table-cell block">
                 <span className="md:hidden font-semibold text-gray-700">User Name: </span>
                 Vedant
@@ -52,7 +51,7 @@ const AllPayments = () => {
             </tr>
 
             {/* Row 2 */}
-            <tr className="h-16 block md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0">
+            <tr className="h-16 block md:table-row border border-gray-200 rounded-md mb-4 md:mb-0 p-4 md:p-0">
               <td className="px-4 py-2 md:table-cell block">
                 <span className="md:hidden font-semibold text-gray-700">User Name: </span>
                 Vedant
@@ -72,7 +71,7 @@ const AllPayments = () => {
             </tr>
 
             {/* Row 3 */}
-            <tr className="h-16 block md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0">
+            <tr className="h-16 block md:table-row border border-gray-200 rounded-md mb-4 md:mb-0 p-4 md:p-0">
               <td className="px-4 py-2 md:table-cell block">
                 <span className="md:hidden font-semibold text-gray-700">User Name: </span>
                 Vedant
@@ -92,7 +91,7 @@ const AllPayments = () => {
             </tr>
 
             {/* Row 4 */}
-            <tr className="h-16 block md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0">
+            <tr className="h-16 block md:table-row border border-gray-200 rounded-md mb-4 md:mb-0 p-4 md:p-0">
               <td className="px-4 py-2 md:table-cell block">
                 <span className="md:hidden font-semibold text-gray-700">User Name: </span>
                 Vedant
