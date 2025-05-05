@@ -91,7 +91,13 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
         </button>
 
        
-        <span className="font-bold text-4xl mr-4">Hi Vedant 👋</span>
+        <div className="flex items-center space-x-1 sm:space-x-2">
+  <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">Hi</span>
+  <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">Vedant</span>
+  <span className="text-base sm:text-xl md:text-2xl lg:text-4xl">👋</span>
+</div>
+
+
 
 
         <Link href="#" className="text-gray-800">
