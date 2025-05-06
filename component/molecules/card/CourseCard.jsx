@@ -2,9 +2,9 @@ const CourseCard = () => {
   return (
     <div className="w-full px-4 py-4">
       <div className="flex flex-col sm:flex-row gap-4 rounded-xl border border-gray-300 w-full max-w-md mx-auto">
-        <div className="w-full sm:w-1/3">
+        <div className="w-full sm:w-1/3 flex justify-center">
           <img
-            className="h-44 w-full object-cover rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
+            className="h-44 max-w-[160px] object-cover rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
             src="https://img.freepik.com/free-photo/education-students-happy-asian-woman-holding-notebooks-laughing-smiling-camera-enjoys-goi_1258-167794.jpg?semt=ais_hybrid&w=740"
             alt="Course"
           />
