@@ -9,8 +9,8 @@ const users = [
 
 const TableAllusers = () => {
   return (
-    <div className="w-full max-w-full">
-      <table className="min-w-full text-sm">
+    <div className="w-full overflow-x-auto">
+      <table className="min-w-full text-sm border-collapse">
         <thead className="bg-gray-200 hidden md:table-header-group">
           <tr className="h-18">
             <th className="px-4 py-2 text-left font-semibold text-[#202224]">User Name</th>
@@ -23,7 +23,7 @@ const TableAllusers = () => {
           {users.map((user, index) => (
             <tr
               key={index}
-              className="block h-18 md:table-row  border-bottom border md:border-0 rounded-lg md:rounded-none mb-4 md:mb-0 p-4 md:p-0"
+              className="block md:table-row border md:border-0 rounded-lg md:rounded-none mb-4 md:mb-0 p-4 md:p-0"
             >
               <td className="px-4 py-2 block md:table-cell">
                 <span className="md:hidden font-semibold text-[#202224]">User Name: </span>
