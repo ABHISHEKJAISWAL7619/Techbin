@@ -177,7 +177,7 @@ const DashboardCards = () => {
       {cardData.map((card, index) => (
         <div
           key={index}
-          className="rounded-[8.57px] p-4  "
+          className="rounded-[8.57px] p-4 text-black  "
           style={{ backgroundColor: card.color }}
         >
           <div className="flex gap-2 items-center">
