@@ -167,7 +167,7 @@ const cardData = [
     title: "Total Purchase",
     value: "321",
     color: "#C7FFA5",
-    icon: "ri-book-mark-line",
+    icon: "ri-user-add-line",
   },
 ];
 
