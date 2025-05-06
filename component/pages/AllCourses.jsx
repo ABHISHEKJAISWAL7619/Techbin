@@ -4,7 +4,7 @@ import CourseCard from "../molecules/card/CourseCard";
 
 const AllCourses = () => {
   return (
-    <div className="p-4 space-y-4 bg-white  ">
+    <div className="p-4 space-y-4 ml-10 mr-5 bg-white  ">
       
       <div className="bg-blue-600 rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col sm:flex-row justify-between items-center text-white gap-4 sm:gap-8 lg:gap-20">
   <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 lg:gap-20 w-full sm:w-auto">
@@ -20,14 +20,14 @@ const AllCourses = () => {
   </div>
   <div className="flex justify-center items-center">
     <Link href="/all-courses/add">
-      <i className="ri-arrow-right-s-line ri-2x text-white"></i>
+      <i className="ri-arrow-right-s-line ri-2x mr-5 text-white"></i>
     </Link>
   </div>
 </div>
 
 
      
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2">
         <CourseCard />
         <CourseCard />
         <CourseCard />

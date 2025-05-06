@@ -13,11 +13,11 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <div
-      className={`fixed  inset-y-0  left-0 pl-9 pt-3 z-30 transform bg-[#F9FAFB] shadow transition-transform duration-300 md:relative md:translate-x-0 ${
+      className={`fixed  inset-y-0 left-0 pl-9 pt-3 z-30 transform bg-[#F9FAFB] shadow transition-transform duration-300 md:relative md:translate-x-0 ${
         isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } w-64 md:w-96 xl:w-96`}
+      } w-64 md:w-68 xl:w-80`}
     >
-      <nav className="flex  h-full flex-col gap-7 py-4 w-74">
+      <nav className="flex  h-full flex-col gap-7 py-4 w-64">
         <div className="flex px-2 ">
           {
             <Link href="/">
