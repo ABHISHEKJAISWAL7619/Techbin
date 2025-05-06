@@ -31,6 +31,21 @@ const users = [
 const AllPayments = () => {
   return (
     <div className="w-full p-4 bg-white">
+       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
+        <div className="relative w-full md:max-w-xs">
+          <span className="absolute inset-y-0 left-3 flex items-center text-[#202224]">🔍</span>
+          <input
+            type="search"
+            placeholder="Search here..."
+            className="w-full border border-gray-500 rounded-3xl pl-10 pr-4 py-2 focus:outline-none"
+          />
+        </div>
+
+        <div className="text-sm text-[#202224] flex items-center gap-1 cursor-pointer">
+          <i className="ri-filter-fill"></i>
+          <span>Filter</span>
+        </div>
+      </div>
       <div className="overflow-x-auto rounded-2xl border border-gray-300">
         <table className="w-full text-sm min-w-[600px]">
           <thead className="bg-gray-200 hidden md:table-header-group">
