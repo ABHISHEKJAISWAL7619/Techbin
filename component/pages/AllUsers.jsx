@@ -1,11 +1,37 @@
 "use client";
-import TableAllusers from "../molecules/card/TableAllusers";
+import React from 'react';
 
-const AllUsers = () => {
+const users = [
+  {
+    Username: 'Vedant',
+    EmailId: 'Digital Marketing',
+    PhoneNumber: '04 Sep 2019',
+    BuyingCourses: '500 INR',
+  },
+  {
+    Username: 'Vedant',
+    EmailId: 'Digital Marketing',
+    PhoneNumber: '04 Sep 2019',
+    BuyingCourses: '500 INR',
+  },
+  {
+    Username: 'Vedant',
+    EmailId: 'Digital Marketing',
+    PhoneNumber: '04 Sep 2019',
+    BuyingCourses: '500 INR',
+  },
+  {
+    Username: 'Vedant',
+    EmailId: 'Digital Marketing',
+    PhoneNumber: '04 Sep 2019',
+    BuyingCourses: '500 INR',
+  },
+];
+
+const AllPayments = () => {
   return (
-    <div className="bg-white rounded-2xl border-white w-full max-w-screen overflow-hidden px-2 md:px-4 py-4">
-      {/* Top Bar with Search and Filter */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
+    <div className="w-full p-4 bg-white">
+       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
         <div className="relative w-full md:max-w-xs">
           <span className="absolute inset-y-0 left-3 flex items-center text-[#202224]">🔍</span>
           <input
@@ -20,13 +46,45 @@ const AllUsers = () => {
           <span>Filter</span>
         </div>
       </div>
-
-      {/* Table Section with scroll on small screens only if needed */}
-      <div className="overflow-x-auto">
-        <TableAllusers />
+      <div className="overflow-x-auto rounded-2xl border border-gray-300">
+        <table className="w-full text-sm min-w-[600px]">
+          <thead className="bg-gray-200 hidden md:table-header-group">
+            <tr className="h-16">
+              <th className="px-4 py-2 text-left font-semibold text-[#202224]">User Name</th>
+              <th className="px-4 py-2 text-left font-semibold text-[#202224]">Course Name</th>
+              <th className="px-4 py-2 text-left font-semibold text-[#202224]">Transaction Date</th>
+              <th className="px-4 py-2 text-left font-semibold text-[#202224]">Amount</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {users.map((user, index) => (
+              <tr
+                key={index}
+                className="block  text-[#202224] md:table-row border border-gray-200 rounded-md md:rounded-none mb-4 md:mb-0 p-4 md:p-0 h-auto md:h-16"
+              >
+                <td className="px-4 py-2 block md:table-cell">
+                  <span className="md:hidden font-semibold text-[#202224]">User Name: </span>
+                  {user.Username}
+                </td>
+                <td className="px-4 py-2 block md:table-cell">
+                  <span className="md:hidden font-semibold text-[#202224]">Course Name: </span>
+                  {user.EmailId}
+                </td>
+                <td className="px-4 py-2 block md:table-cell">
+                  <span className="md:hidden font-semibold text-[#202224]">Transaction Date: </span>
+                  {user.PhoneNumber}
+                </td>
+                <td className="px-4 py-2 block md:table-cell">
+                  <span className="md:hidden font-semibold text-[#202224]">Amount: </span>
+                  {user.BuyingCourses}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
-export default AllUsers;
+export default AllPayments;

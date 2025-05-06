@@ -56,7 +56,7 @@ const AllPayments = () => {
               <th className="px-4 py-2 text-left font-semibold text-[#202224]">Amount</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 text-[#202224]">
             {users.map((user, index) => (
               <tr
                 key={index}
