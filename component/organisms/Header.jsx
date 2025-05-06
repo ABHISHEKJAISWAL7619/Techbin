@@ -25,7 +25,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
         </button>
 
        
-        <div className="flex items-center space-x-1 sm:space-x-2 pl-5 pb-9 pt-10 ">
+        <div className="flex text-[#202224] items-center space-x-1 sm:space-x-2 pl-5 pb-9 pt-10 ">
   <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">Hi</span>
   <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">Vedant</span>
   <span className="text-base sm:text-xl md:text-2xl lg:text-4xl">👋</span>
