@@ -16,7 +16,7 @@ const Card = () => {
               alt="User"
             />
             <div>
-              <p className="font-[#2F3038]">Vedant Tidke</p>
+              <p className=" font-[#2F3038] ">Vedant Tidke</p>
               <p className="text-sm  font-[#7D7D7D] break-all">vedant6447@gmail.com</p>
             </div>
           </div>
