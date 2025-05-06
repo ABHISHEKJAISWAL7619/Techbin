@@ -28,7 +28,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div>
 
         <ul className="vertical-scrollbar flex h-full w-full flex-col gap-2 overflow-y-auto  text-2xl">
-          <div className="flex w-64 flex-col gap-5 ">
+          <div className="flex w-56 flex-col gap-5 ">
             {navigation.map((item, index) => {
               const { route, label, icon, subMenu } = item;
               return (
