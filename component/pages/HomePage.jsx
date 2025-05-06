@@ -184,7 +184,7 @@ const DashboardCards = () => {
             <i className={`${card.icon} ri-2x`}></i>
             <span className="font-poppins text-2xl">{card.title}</span>
           </div>
-          <p className="text-[15px] mt-2 text-[#202224]">Current Value</p>
+          <p className="text-[15px] mt-2 text-[#838383]">Current Value</p>
           <h1 className="mt-2 font-bold text-xl">{card.value}</h1>
         </div>
       ))}
