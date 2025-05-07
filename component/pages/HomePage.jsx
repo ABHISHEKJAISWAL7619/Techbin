@@ -152,13 +152,13 @@ const cardData = [
     icon: "ri-file-user-line",
   },
   {
-    title: "New Signups",
+    title: "Total Courses",
     value: "145",
     color: "#B79BFF",
     icon: "ri-user-add-line",
   },
   {
-    title: "Active Users",
+    title: "Live Courses",
     value: "87",
     color: "#FFE5A5",
     icon: "ri-bar-chart-box-line",
