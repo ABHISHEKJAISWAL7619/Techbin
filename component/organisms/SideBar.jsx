@@ -21,7 +21,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <div className="flex px-2 ">
           {
             <Link href="/">
-              <h1 class="font-bold text-[40px] leading-[100%] tracking-[0%] text-[#252121] mb-20 pt-3.5 ">LOGO</h1>
+              <h1 className="font-bold text-[40px] leading-[100%] tracking-[0%] text-[#252121] mb-20 pt-3.5 ">LOGO</h1>
               <h1 className="mt-9 mb-11 font-bold h-[30px] text-gray-900 text-2xl " >OVERVIEW</h1>
             </Link>
           }

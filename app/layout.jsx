@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "remixicon/fonts/remixicon.css";
 import "./globals.css";
 import { Poppins } from 'next/font/google';
+import { Provider } from "react-redux";
+import { ReduxProvider } from "@/redux/provider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,7 +30,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+       <ReduxProvider>{children}</ReduxProvider> 
       </body>
     </html>
   );

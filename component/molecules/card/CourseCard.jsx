@@ -1,4 +1,41 @@
+
+"use client";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 const CourseCard = () => {
+
+  const [course, setcourse] = useState("");
+  let user  = useSelector((state)=>state.user);
+
+
+
+
+  useEffect(() => {
+      const fetchUsers = async () => {
+        try {
+          const token = user.token;
+          const res = await axios.get('https://tech-bin.devloperhemant.com/api/admin/courses', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setcourse(res.data); 
+        } catch (error) {
+          console.error('Error fetching users:', error);
+        }
+      };
+  
+      fetchUsers();
+    }, []);
+
+console.log(course)
+
+
+
+
+
   return (
     <div className="w-full px-4 py-4">
       <div className="flex flex-col sm:flex-row gap-4 rounded-xl border border-gray-300 w-full max-w-md mx-auto">
@@ -26,7 +63,7 @@ const CourseCard = () => {
             </p>
           </div>
           <div className="mt-2">
-            <del className="text-[#202224]">₹5000</del>{' '}
+            <del className="text-[#202224]">₹5000</del>
             <span className="text-green-500 font-poppins">₹1000</span>
           </div>
         </div>

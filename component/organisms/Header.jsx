@@ -1,6 +1,13 @@
+
+'use client'
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
+const user = useSelector((state) => state.user);
+// console.log(user.user.name);
+  const userName = user.user.name;
+
   return (
     <header className="sticky top-0 z-10 flex items-center h-30 justify-between bg-[#F9FAFB] px-5 py-3 md:px-8">
       <div className="flex items-center gap- sm:gap-0  ">
@@ -27,7 +34,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
        
         <div className="flex text-[#202224] items-center space-x-1 sm:space-x-2 pl-5 pb-9 pt-10 ">
   <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">Hi</span>
-  <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">Vedant</span>
+  <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">{userName}</span>
   <span className="text-base sm:text-xl md:text-2xl lg:text-4xl">👋</span>
 </div>
 
@@ -58,7 +65,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
                 >
                   
                 </svg>
-               <span className="h-10 w-10 mt-7 " > <i class="ri-notification-4-fill"></i></span>
+               <span className="h-10 w-10 mt-7 " > <i className="ri-notification-4-fill"></i></span>
               </div>
             </Link>
             <div className="flex flex-col justify-center text-xs text-gray-400 mr-6

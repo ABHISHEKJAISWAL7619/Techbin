@@ -1,8 +1,13 @@
+"use client";
 import Link from 'next/link';
 
 import CourseCard from "../molecules/card/CourseCard";
 
 const AllCourses = () => {
+
+
+
+
   return (
     <div className="p-4 space-y-4 ml-10 mr-5 bg-white  ">
       
