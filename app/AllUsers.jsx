@@ -1,32 +1,40 @@
 "use client";
-
-import { getallusers } from "@/redux/slice/user-slice";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 const AllUsers = () => {
-  const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const getalluser = async () => {
-    const res = await dispatch(getallusers());
-    const allUsers = res.payload?.data || [];
-
-    // Remove users with role === "Admin"
-    const nonAdminUsers = allUsers.filter((user) => user.role !== "Admin");
-
-    setUsers(nonAdminUsers);
-  };
 
   useEffect(() => {
-    getalluser();
-  }, [dispatch]);
+    // Dummy users data
+    const dummyUsers = [
+      {
+        name: "Abhishek Kumar",
+        email: "abhishek@example.com",
+        mobile: "9876543210",
+        status: "React, Node.js",
+      },
+      {
+        name: "Amarjeet Verma",
+        email: "amarjeet@example.com",
+        mobile: "9123456780",
+        status: "MERN Stack",
+      },
+      {
+        name: "Arun Chakravarti",
+        email: "arun@example.com",
+        mobile: "9012345678",
+        status: "JavaScript, MongoDB",
+      },
+      {
+        name: "Hemant Singh",
+        email: "hemant@example.com",
+        mobile: "9988776655",
+        status: "Next.js, Express",
+      },
+    ];
 
-  // Filter users based on search term
-  const filteredUsers = users.filter((user) =>
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    setUsers(dummyUsers);
+  }, []);
 
   return (
     <div className="w-full px-4 py-6">
@@ -39,17 +47,15 @@ const AllUsers = () => {
               </span>
               <input
                 type="search"
-                placeholder="Search by email..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search here..."
                 className="w-full border border-gray-500 rounded-3xl pl-10 pr-4 py-2 focus:outline-none"
               />
             </div>
 
-            {/* <div className="text-sm text-[#202224] flex items-center gap-1 cursor-pointer">
+            <div className="text-sm text-[#202224] flex items-center gap-1 cursor-pointer">
               <i className="ri-filter-fill"></i>
               <span>Filter</span>
-            </div> */}
+            </div>
           </div>
 
           {/* Desktop Table */}
@@ -71,13 +77,11 @@ const AllUsers = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {filteredUsers.map((user, index) => (
+              {users.map((user, index) => (
                 <tr key={index} className="h-14 Nunito Sans">
                   <td className="px-4 py-2 text-[#202224]">{user.name}</td>
                   <td className="px-4 py-2 text-[#202224]">{user.email}</td>
-                  <td className="px-4 py-2 text-[#202224]">
-                    {user.mobile || "N/A"}
-                  </td>
+                  <td className="px-4 py-2 text-[#202224]">{user.mobile}</td>
                   <td className="px-4 py-2 text-[#202224]">{user.status}</td>
                 </tr>
               ))}
@@ -86,7 +90,7 @@ const AllUsers = () => {
 
           {/* Mobile View */}
           <div className="md:hidden space-y-4">
-            {filteredUsers.map((user, index) => (
+            {users.map((user, index) => (
               <div
                 key={index}
                 className="border border-gray-200 rounded-md p-4 shadow-sm"
@@ -112,7 +116,7 @@ const AllUsers = () => {
                     Phone Number:
                   </span>
                   <span className="text-[#202224] font-poppins">
-                    {user.mobile || "N/A"}
+                    {user.mobile}
                   </span>
                 </div>
                 <div>

@@ -1,11 +1,8 @@
-import Login from '@/component/pages/Login'
-import MainLayout from '@/component/templates/MainLayout'
-import React from 'react'
+import Login from "@/component/pages/Login";
+import React from "react";
 
 const page = () => {
-  return (
-    <MainLayout> <Login/> </MainLayout> 
-  )
-}
+  return <Login />;
+};
 
-export default page
+export default page;

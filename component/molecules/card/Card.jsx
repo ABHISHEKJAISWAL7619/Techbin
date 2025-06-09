@@ -1,33 +1,28 @@
-import axios from "axios";
+"use client";
+
+import { getallusers } from "@/redux/slice/user-slice";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Card = () => {
-  const user = useSelector((state) => state.user);
-  const [users, setUsers] = useState([]);
-  const [showAll, setShowAll] = useState(false);  
+  const dispatch = useDispatch();
+  const [allUsers, setAllUsers] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
+  const getalluser = async () => {
+    const res = await dispatch(getallusers());
+    if (res.payload?.data) {
+      // Filter out Admin users
+      const filtered = res.payload.data.filter((user) => user.role !== "Admin");
+      setAllUsers(filtered);
+    }
+  };
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const token = user.token;
-        const res = await axios.get('https://tech-bin.devloperhemant.com/api/admin/users', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        console.log("Fetched users data:", res.data);
-        setUsers(res.data.data || []); 
-      } catch (error) {
-        console.error('Error fetching users:', error);
-        setUsers([]);
-      }
-    };
+    getalluser();
+  }, [dispatch]);
 
-    fetchUsers();
-  }, [user.token]);
-
-  const displayedUsers = showAll ? users : users.slice(0, 4); 
+  const displayedUsers = showAll ? allUsers : allUsers.slice(0, 5);
 
   return (
     <div className="p-4 w-full max-w-md mx-auto">
@@ -41,7 +36,10 @@ const Card = () => {
           <div key={index} className="flex gap-4 pt-4 px-4 items-center">
             <img
               className="h-12 w-12 object-cover rounded-full"
-              src={ele.avatar || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+              src={
+                ele.avatar ||
+                "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+              }
               alt="User"
             />
             <div>
@@ -52,9 +50,9 @@ const Card = () => {
         ))}
 
         <div className="flex justify-center items-center text-sm text-blue-600 p-4">
-          <button 
+          <button
             className="hover:underline"
-            onClick={() => setShowAll((prevState) => !prevState)}
+            onClick={() => setShowAll((prev) => !prev)}
           >
             {showAll ? "View Less" : "View All"}
           </button>
@@ -65,4 +63,3 @@ const Card = () => {
 };
 
 export default Card;
-

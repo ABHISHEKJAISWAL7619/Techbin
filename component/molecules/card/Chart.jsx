@@ -23,7 +23,7 @@ const data = [
 
 const CourseChart = () => {
   return (
-    <div className="w-full max-w-3xl mx-auto p-4 aspect-[4/3]">
+    <div className="w-full max-w-3xl mx-auto p-4 bg-white aspect-[4/3]">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
@@ -39,7 +39,12 @@ const CourseChart = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line
+            type="monotone"
+            dataKey="pv"
+            stroke="#8884d8"
+            activeDot={{ r: 8 }}
+          />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>
@@ -48,4 +53,3 @@ const CourseChart = () => {
 };
 
 export default CourseChart;
-

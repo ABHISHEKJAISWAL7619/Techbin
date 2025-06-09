@@ -24,6 +24,7 @@ export default function MainLayout({ children, pageTitle }) {
         <Header
           pageTitle={pageTitle}
           isSidebarOpen={isSidebarOpen}
+          userName={"User"}
           setIsSidebarOpen={setIsSidebarOpen}
         />
 

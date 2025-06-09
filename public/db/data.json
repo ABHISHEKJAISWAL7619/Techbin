@@ -13,7 +13,12 @@
       { 
         "icon": " ri-chat-download-line",
         "route": "/all-courses",
-        "label": "All Cources"
+        "label": "All Courses"
+      },
+      {  
+        "icon": "ri-menu-search-line", 
+        "route": "/all-category",
+        "label": "Category"
       },
       {  
         "icon": "ri-money-rupee-circle-line",

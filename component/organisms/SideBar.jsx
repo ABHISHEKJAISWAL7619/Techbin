@@ -3,13 +3,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import DashboardLink from "../atom/DashboardLink";
+import { logout } from "@/redux/slice/auth-slice";
+import toast from "react-hot-toast";
 
 const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const path = usePathname();
   const router = useRouter();
   const { navigation } = data;
-
-
 
   return (
     <div
@@ -21,8 +21,12 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <div className="flex px-2 ">
           {
             <Link href="/">
-              <h1 className="font-bold text-[40px] leading-[100%] tracking-[0%] text-[#252121] mb-20 pt-3.5 ">LOGO</h1>
-              <h1 className="mt-9 mb-11 font-bold h-[30px] text-gray-900 text-2xl " >OVERVIEW</h1>
+              <h1 className="font-bold text-[40px] leading-[100%] tracking-[0%] text-[#252121] mb-20 pt-3.5 ">
+                LOGO
+              </h1>
+              <h1 className="mt-9 mb-11 font-bold h-[30px] text-gray-900 text-2xl ">
+                OVERVIEW
+              </h1>
             </Link>
           }
         </div>
@@ -48,7 +52,13 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               route="#"
               label="Log out"
               heroIcon="ri-logout-circle-fill"
-              handleClick={() => {}}
+              handleClick={() => {
+                logout();
+
+                router.push("/login-page");
+                toast.success("Logged out successfully");
+                setIsSidebarOpen(false);
+              }}
             />
           </div>
         </ul>

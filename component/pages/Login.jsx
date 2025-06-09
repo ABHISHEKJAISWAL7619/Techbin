@@ -1,66 +1,49 @@
 "use client";
 
-import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { setstate } from "@/redux/slice/UserSlice";
+import { loginuser } from "@/redux/slice/auth-slice";
+import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const emailRef = useRef();
-  const otpRef = useRef();
-  const [otpSent, setOtpSent] = useState(false);
-  const [email, setEmail] = useState("");
+  const [error, seterror] = useState();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const router = useRouter();
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // Step 1: Send OTP
-  const handleSendOtp = async (e) => {
-    e.preventDefault();
-    const userEmail = emailRef.current.value;
-
-    try {
-      const res = await axios.post("https://tech-bin.devloperhemant.com/api/auth/login", { email: userEmail });
-     
-      if (res.status === 200 && res.data.message === "OTP sent.") {
-        alert("OTP Sent to your email.");
-        setEmail(userEmail);
-        setOtpSent(true);
-      } else {
-        alert("Failed to send OTP.");
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      alert("Something went wrong.");
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Step 2: Verify OTP
-  const handleVerifyOtp = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    const otp = otpRef.current.value;
+    const { email, password } = formData;
 
-    try {
-      const res = await axios.post("https://tech-bin.devloperhemant.com/api/auth/verify-otp", { email, otp });
-      console.log("Verify Response:", res.data);
-      if (res.status === 200 && res.data.message === "Login successful") {
-        alert("Login successful!");
-        console.log(res.data.user)
-        dispatch(setstate(res.data.user ));
-        dispatch(setstate(res.data));
-        router.push("/home-page");
+    if (email && password) {
+      dispatch(loginuser(formData));
+      const token = Cookies.get("token");
+      console.log("Token of techbin:", token);
+      if (!token) {
+        toast.error("Login failed. Please check your credentials.");
+        return;
       } else {
-        alert("OTP verification failed.");
+        toast.success("Login successful!");
       }
-    } catch (error) {
-      alert("Something went wrong during verification.");
+      router.push("/");
+    } else {
+      seterror("Please enter both email and password.");
     }
   };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
-        onSubmit={otpSent ? handleVerifyOtp : handleSendOtp}
+        onSubmit={handleLogin}
         className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm"
       >
         <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
@@ -68,33 +51,34 @@ const Login = () => {
         <div className="mb-4">
           <label className="block text-sm font-medium mb-1">Email</label>
           <input
-            ref={emailRef}
             type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Enter your email"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
-            disabled={otpSent} 
           />
         </div>
 
-        {otpSent && (
-          <div className="mb-6">
-            <label className="block text-sm font-medium mb-1">OTP</label>
-            <input
-              ref={otpRef}
-              type="text"
-              placeholder="Enter OTP"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-        )}
-
+        <div className="mb-6">
+          <label className="block text-sm font-medium mb-1">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+        <p>{error}</p>
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
         >
-          {otpSent ? "Verify OTP & Login" : "Send OTP"}
+          Login
         </button>
       </form>
     </div>
@@ -102,4 +86,3 @@ const Login = () => {
 };
 
 export default Login;
-
