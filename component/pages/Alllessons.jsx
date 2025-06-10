@@ -1,12 +1,14 @@
 "use client";
 
 import { getallcourse } from "@/redux/slice/course-slice";
+import { craetelesson } from "@/redux/slice/lesson-slice";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 const Alllessons = ({ courseId, onSubmit }) => {
   const dispatch = useDispatch();
-
+  const [error, seterror] = useState("");
   const [courses, setCourses] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
@@ -34,9 +36,34 @@ const Alllessons = ({ courseId, onSubmit }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    seterror("");
+
+    if (!formData.course) {
+      seterror("Please select a course");
+      return;
+    }
+    if (!formData.title) {
+      seterror("Please enter title");
+      return;
+    }
+    if (!formData.content) {
+      seterror("Please enter content");
+      return;
+    }
+    if (!formData.videoUrl) {
+      seterror("Please enter video url");
+      return;
+    }
+    if (!formData.duration) {
+      seterror("Please enter duration");
+      return;
+    }
+
+    const res = await dispatch(craetelesson(formData));
+    toast.success(res.message || "Lesson created successfully");
+    console.log(res.payload);
   };
 
   return (
@@ -110,6 +137,11 @@ const Alllessons = ({ courseId, onSubmit }) => {
           required
         />
       </div>
+
+      {/* ✅ Error message red color me dikhega */}
+      {error && (
+        <p className="text-red-600 text-sm font-medium -mt-2">{error}</p>
+      )}
 
       <button
         type="submit"
