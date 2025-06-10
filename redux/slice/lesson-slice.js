@@ -66,6 +66,35 @@ export const getlessonsbycourseId = createAsyncThunk(
   }
 );
 
+export const deletelessonsbyId = createAsyncThunk(
+  "lessons/delete",
+  async (lessonId, { rejectWithValue }) => {
+    const token = Cookies.get("token");
+    if (!token) {
+      return rejectWithValue({ message: "Unauthorized: No token found" });
+    }
+
+    try {
+      const { data } = await axios.delete(
+        `
+        ${NEXT_PUBLIC_API_URL}api/admin/lessons/${lessonId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("lessons deleted:", data);
+      return data;
+    } catch (error) {
+      const errRes = error.response?.data || { message: error.message };
+      console.error("lessons deleted Error:", errRes);
+      return rejectWithValue(errRes);
+    }
+  }
+);
+
 const token = Cookies.get("token");
 
 const initialState = {

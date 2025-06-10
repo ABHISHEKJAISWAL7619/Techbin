@@ -27,9 +27,9 @@ const CourseCard = ({ course }) => {
             <span className="text-yellow-400 font-poppins">
               {course.category?.name}
             </span>
-            <span>
-              <i className="ri-arrow-up-circle-line text-xl"></i>
-            </span>
+            <Link href={`/all-courses/add/${course._id}`}>
+              <i className=" w-18 ri-pencil-line"></i>
+            </Link>
           </div>
           <h1 className="font-bold text-2xl mt-1">{course.title}</h1>
           <p className="text-sm text-[#202224] mt-3">
@@ -38,7 +38,7 @@ const CourseCard = ({ course }) => {
           </p>
         </div>
         <div className="mt-2">
-          <del className="text-[#202224]">₹5000</del>
+          <del className="text-[#202224]">{course.price * 2.1}</del>
           <span className="text-green-500 font-poppins">₹{course.price}</span>
         </div>
       </div>

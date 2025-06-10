@@ -66,6 +66,64 @@ export const getallcourse = createAsyncThunk(
   }
 );
 
+export const getcoursebyId = createAsyncThunk(
+  "course/getbyid",
+  async (courseId, { rejectWithValue }) => {
+    const token = Cookies.get("token");
+    if (!token) {
+      return rejectWithValue({ message: "Unauthorized: No token found" });
+    }
+
+    try {
+      const { data } = await axios.get(
+        `
+        ${NEXT_PUBLIC_API_URL}api/admin/courses/${courseId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("course fetched:", data);
+      return data;
+    } catch (error) {
+      const errRes = error.response?.data || { message: error.message };
+      console.error("course fetched Error:", errRes);
+      return rejectWithValue(errRes);
+    }
+  }
+);
+export const updatecoursebyId = createAsyncThunk(
+  "course/getbyid",
+  async ({ courseId, formData }, { rejectWithValue }) => {
+    const token = Cookies.get("token");
+    if (!token) {
+      return rejectWithValue({ message: "Unauthorized: No token found" });
+    }
+
+    try {
+      const { data } = await axios.put(
+        `
+        ${NEXT_PUBLIC_API_URL}api/admin/courses/${courseId}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("course updated:", data);
+      return data;
+    } catch (error) {
+      const errRes = error.response?.data || { message: error.message };
+      console.error("course updated Error:", errRes);
+      return rejectWithValue(errRes);
+    }
+  }
+);
+
 const token = Cookies.get("token");
 
 const initialState = {

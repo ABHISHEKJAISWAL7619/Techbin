@@ -1,7 +1,11 @@
 "use client";
 import { getauthprofile } from "@/redux/slice/auth-slice";
-import { getlessonsbycourseId } from "@/redux/slice/lesson-slice";
+import {
+  deletelessonsbyId,
+  getlessonsbycourseId,
+} from "@/redux/slice/lesson-slice";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 const Courselessons = ({ courseId }) => {
@@ -22,7 +26,12 @@ const Courselessons = ({ courseId }) => {
     fetchlessonsbyid();
   }, [dispatch]);
 
-  
+  const handledelete = async (lessonId) => {
+    console.log(lessonId);
+    let res = await dispatch(deletelessonsbyId(lessonId));
+    toast.success(res.message || "Lesson deleted successfully");
+    fetchlessonsbyid();
+  };
 
   return (
     <div className="p-4">
@@ -40,6 +49,7 @@ const Courselessons = ({ courseId }) => {
               <th className="border px-4 py-2">Content</th>
               <th className="border px-4 py-2">Video URL</th>
               <th className="border px-4 py-2">Duration (min)</th>
+              <th className="border px-4 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -58,6 +68,16 @@ const Courselessons = ({ courseId }) => {
                   </a>
                 </td>
                 <td className="border px-4 py-2">{lesson.duration}</td>
+                <td className="border px-4 py-2">
+                  <span
+                    onClick={() => {
+                      handledelete(lesson._id);
+                    }}
+                    className="cursor-pointer text-red-500 hover:text-red-700"
+                  >
+                    <i className="ri-delete-bin-6-line ri-xl"></i>
+                  </span>
+                </td>
               </tr>
             ))}
           </tbody>

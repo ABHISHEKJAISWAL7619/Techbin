@@ -22,7 +22,11 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           {
             <Link href="/">
               <h1 className="font-bold text-[40px] leading-[100%] tracking-[0%] text-[#252121] mb-20 pt-3.5 ">
-                LOGO
+                <img
+                  className="h-10"
+                  src="/img/TECHBIN ONLINE.png"
+                  alt="logo"
+                />
               </h1>
               <h1 className="mt-9 mb-8 font-bold h-[30px] text-gray-900 text-2xl ">
                 OVERVIEW
