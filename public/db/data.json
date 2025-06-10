@@ -10,16 +10,22 @@
         "route": "/all-users",
         "label": "All Users"
       },
+       {  
+        "icon": "ri-menu-search-line", 
+        "route": "/all-category",
+        "label": "Category"
+      },
       { 
         "icon": " ri-chat-download-line",
         "route": "/all-courses",
         "label": "All Courses"
       },
-      {  
-        "icon": "ri-menu-search-line", 
-        "route": "/all-category",
-        "label": "Category"
+        { 
+        "icon": "ri-book-2-line",             
+        "route": "/all-lessons",
+        "label": "All Lessons"
       },
+     
       {  
         "icon": "ri-money-rupee-circle-line",
         "route": "/all-payments",

@@ -1,8 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { useSelector } from "react-redux";
 
-const Header = ({ isSidebarOpen, setIsSidebarOpen, userName, pageTitle }) => {
-
+const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
   return (
     <header className="sticky top-0 z-10 flex items-center h-30 justify-between bg-[#F9FAFB] px-5 py-3 md:px-8">
       <div className="flex items-center gap- sm:gap-0  ">
@@ -31,7 +31,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, userName, pageTitle }) => {
             Hi
           </span>
           <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">
-          User
+            User
           </span>
           <span className="text-base sm:text-xl md:text-2xl lg:text-4xl">
             👋
@@ -46,37 +46,13 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, userName, pageTitle }) => {
       </div>
 
       <div className="flex w-2/3 flex-row items-center justify-end gap-2">
-        {
-          <div className="flex flex-row gap-3">
-            <Link href="/profile">
-              <div className="flex aspect-square h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-xl text-blue-500">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 448 512"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                ></svg>
-                <span className="h-10 w-10 mt-7 ">
-                  {" "}
-                  <i className="ri-notification-4-fill"></i>
-                </span>
-              </div>
-            </Link>
-            <div
-              className="flex flex-col justify-center text-xs text-gray-400 mr-6
-             "
-            >
-              <img
-                className="  w-[55px] h-[53px] "
-                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                alt=""
-              />
-            </div>
-          </div>
-        }
+        <div className="flex flex-col justify-center text-xs text-gray-400 mr-6">
+          <img
+            className="w-[55px] h-[53px]"
+            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+            alt=""
+          />
+        </div>
       </div>
     </header>
   );

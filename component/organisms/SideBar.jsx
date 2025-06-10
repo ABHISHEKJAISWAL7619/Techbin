@@ -24,7 +24,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               <h1 className="font-bold text-[40px] leading-[100%] tracking-[0%] text-[#252121] mb-20 pt-3.5 ">
                 LOGO
               </h1>
-              <h1 className="mt-9 mb-11 font-bold h-[30px] text-gray-900 text-2xl ">
+              <h1 className="mt-9 mb-8 font-bold h-[30px] text-gray-900 text-2xl ">
                 OVERVIEW
               </h1>
             </Link>
@@ -32,7 +32,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         </div>
 
         <ul className="vertical-scrollbar flex h-full w-full flex-col gap-2 overflow-y-auto  text-2xl">
-          <div className="flex w-56 flex-col gap-5 ">
+          <div className="flex w-56 flex-col gap-4 ">
             {navigation.map((item, index) => {
               const { route, label, icon, subMenu } = item;
               return (

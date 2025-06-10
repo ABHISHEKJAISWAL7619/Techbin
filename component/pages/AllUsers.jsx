@@ -1,5 +1,6 @@
 "use client";
 
+import ExportExcel from "@/lib/xlxs";
 import { getallusers } from "@/redux/slice/user-slice";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -46,10 +47,9 @@ const AllUsers = () => {
               />
             </div>
 
-            {/* <div className="text-sm text-[#202224] flex items-center gap-1 cursor-pointer">
-              <i className="ri-filter-fill"></i>
-              <span>Filter</span>
-            </div> */}
+            <div className="text-sm text-[#202224] flex items-center gap-1 cursor-pointer">
+              <ExportExcel data={filteredUsers} />
+            </div>
           </div>
 
           {/* Desktop Table */}
