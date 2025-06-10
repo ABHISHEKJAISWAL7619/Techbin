@@ -1,15 +1,23 @@
 "use client";
 
+import Link from "next/link";
+
+// import { Link } from "lucide-react";
+
 const CourseCard = ({ course }) => {
+  console.log(course._id);
+
   return (
     <div className="flex flex-col sm:flex-row gap-4 rounded-xl border border-gray-300 w-full max-w-md mx-auto">
       {/* Image Section */}
       <div className="w-full sm:w-1/3 flex justify-center sm:justify-start">
-        <img
-          className="h-44 w-44 max-w-[160px] object-cover rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
-          src={course.thumbnail}
-          alt={course.title}
-        />
+        <Link href={`/all-courses/lessons/${course._id}`}>
+          <img
+            className="h-44 w-44 max-w-[160px] object-cover rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none"
+            src={course.thumbnail}
+            alt={course.title}
+          />
+        </Link>
       </div>
 
       {/* Text Section */}

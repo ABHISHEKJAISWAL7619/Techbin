@@ -37,6 +37,35 @@ export const craetelesson = createAsyncThunk(
   }
 );
 
+export const getlessonsbycourseId = createAsyncThunk(
+  "lessons/getall",
+  async (course, { rejectWithValue }) => {
+    const token = Cookies.get("token");
+    if (!token) {
+      return rejectWithValue({ message: "Unauthorized: No token found" });
+    }
+
+    try {
+      const { data } = await axios.get(
+        `
+        ${NEXT_PUBLIC_API_URL}api/admin/course/${course}/lessons`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("lessons fetched:", data);
+      return data;
+    } catch (error) {
+      const errRes = error.response?.data || { message: error.message };
+      console.error("lessons fetched Error:", errRes);
+      return rejectWithValue(errRes);
+    }
+  }
+);
+
 const token = Cookies.get("token");
 
 const initialState = {

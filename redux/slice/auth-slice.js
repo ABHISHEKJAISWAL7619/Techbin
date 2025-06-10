@@ -36,6 +36,35 @@ export const loginuser = createAsyncThunk(
   }
 );
 
+export const getauthprofile = createAsyncThunk(
+  "profile/authprofile",
+  async (_, { rejectWithValue }) => {
+    const token = Cookies.get("token");
+    if (!token) {
+      return rejectWithValue({ message: "Unauthorized: No token found" });
+    }
+
+    try {
+      const { data } = await axios.get(
+        `
+        ${NEXT_PUBLIC_API_URL}api/auth/profile`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(" profile fetched:", data);
+      return data;
+    } catch (error) {
+      const errRes = error.response?.data || { message: error.message };
+      console.error("profile fetched Error:", errRes);
+      return rejectWithValue(errRes);
+    }
+  }
+);
+
 const token = Cookies.get("token");
 
 const initialState = {
