@@ -22,13 +22,7 @@ const Courselessons = ({ courseId }) => {
     fetchlessonsbyid();
   }, [dispatch]);
 
-  const getprofile = async () => {
-    const res = await dispatch(getauthprofile());
-    console.log(res.payload);
-  };
-  useEffect(() => {
-    getprofile();
-  }, [dispatch]);
+  
 
   return (
     <div className="p-4">

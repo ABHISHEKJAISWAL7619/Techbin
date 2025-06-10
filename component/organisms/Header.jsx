@@ -1,8 +1,31 @@
 "use client";
 
+import { getauthprofile } from "@/redux/slice/auth-slice";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
 
 const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
+  const dispatch = useDispatch();
+  const [user, setUser] = useState("");
+
+  const getProfile = async () => {
+    try {
+      const res = await dispatch(getauthprofile());
+      if (res.payload && res.payload.user) {
+        setUser(res.payload.user);
+      } else {
+        setUser("Guest");
+      }
+    } catch (error) {
+      console.error("Failed to fetch profile:", error);
+      setUser("Guest");
+    }
+  };
+
+  useEffect(() => {
+    getProfile();
+  }, [dispatch]);
   return (
     <header className="sticky top-0 z-10 flex items-center h-30 justify-between bg-[#F9FAFB] px-5 py-3 md:px-8">
       <div className="flex items-center gap- sm:gap-0  ">
@@ -31,7 +54,7 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
             Hi
           </span>
           <span className="font-bold text-base sm:text-xl md:text-2xl lg:text-4xl">
-            User
+            {user.name}
           </span>
           <span className="text-base sm:text-xl md:text-2xl lg:text-4xl">
             👋
@@ -46,13 +69,22 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen, pageTitle }) => {
       </div>
 
       <div className="flex w-2/3 flex-row items-center justify-end gap-2">
-        <div className="flex flex-col justify-center text-xs text-gray-400 mr-6">
-          <img
-            className="w-[55px] h-[53px]"
-            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-            alt=""
-          />
-        </div>
+        {
+          <div className="flex w-2/3 flex-row items-center justify-end gap-2">
+            <Link href="/profile">
+              <div className="flex flex-col justify-center text-xs text-gray-400 mr-6 cursor-pointer">
+                <img
+                  className="w-[55px] h-[53px]"
+                  src={
+                    user.avatar ||
+                    "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  }
+                  alt="profile"
+                />
+              </div>
+            </Link>
+          </div>
+        }
       </div>
     </header>
   );

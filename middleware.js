@@ -15,23 +15,21 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
-  // Allow access to auth routes for unauthenticated users
-  if (
-    !accessToken &&
-    (pathname === "/login-page" || pathname === "/login-page")
-  ) {
+  // Allow access to login page for unauthenticated users
+  if (!accessToken && pathname === "/login-page") {
     return NextResponse.next();
   }
 
-  // Redirect authenticated users away from signin page
-  if (accessToken && pathname.startsWith("/login-page")) {
+  // Redirect authenticated users away from login page to home
+  if (accessToken && pathname === "/login-page") {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // Redirect unauthenticated users to signin
+  // Redirect unauthenticated users to login page
   if (!accessToken) {
     return NextResponse.redirect(new URL("/login-page", request.url));
   }
 
+  // For all other cases, allow
   return NextResponse.next();
 }
