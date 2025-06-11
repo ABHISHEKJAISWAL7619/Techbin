@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import DashboardLink from "../atom/DashboardLink";
 import { logout } from "@/redux/slice/auth-slice";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const path = usePathname();
   const router = useRouter();
+  const dispatch = useDispatch();
   const { navigation } = data;
 
   return (
@@ -57,7 +59,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               label="Log out"
               heroIcon="ri-logout-circle-fill"
               handleClick={() => {
-                logout();
+                dispatch(logout());
 
                 router.push("/login-page");
                 toast.success("Logged out successfully");
