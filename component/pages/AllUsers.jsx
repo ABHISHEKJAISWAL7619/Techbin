@@ -188,7 +188,7 @@ const AllUsers = () => {
       <div className="overflow-x-auto max-w-full mx-auto rounded">
         <div className="p-4 rounded border border-gray-300">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-4">
-            <div className="relative w-full md:max-w-xs">
+            <div className="relative w-full md:max-w-xs text-black">
               <span className="absolute inset-y-0 left-3 flex items-center text-[#202224]">
                 🔍
               </span>

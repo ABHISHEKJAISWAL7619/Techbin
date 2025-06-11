@@ -280,7 +280,7 @@ const Category = () => {
         </div>
 
         {/* Category Name */}
-        <div>
+        <div className="text-black">
           <input
             type="text"
             name="name"
@@ -307,18 +307,20 @@ const Category = () => {
 
       {/* Category Table */}
       <div className="mt-10">
-        <h2 className="text-xl font-semibold mb-4">All Categories</h2>
+        <h2 className="text-xl text-black font-semibold mb-4">
+          All Categories
+        </h2>
         <div className="overflow-x-auto rounded-lg shadow">
           <table className="min-w-full divide-y divide-gray-200 bg-white">
             <thead className="bg-gray-100">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                   Thumbnail
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                   Name
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                   Action
                 </th>
               </tr>

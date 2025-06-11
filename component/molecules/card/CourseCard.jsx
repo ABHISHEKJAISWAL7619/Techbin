@@ -31,14 +31,16 @@ const CourseCard = ({ course }) => {
               <i className=" w-18 ri-pencil-line"></i>
             </Link>
           </div>
-          <h1 className="font-bold text-2xl mt-1">{course.title}</h1>
+          <h1 className="font-bold  text-black text-2xl mt-1">
+            {course.title}
+          </h1>
           <p className="text-sm text-[#202224] mt-3">
             <i className="ri-star-fill text-yellow-400"></i> {course.rating} |{" "}
             {course.totalHours} Hrs
           </p>
         </div>
         <div className="mt-2">
-          <del className="text-[#202224]">{course.price * 2.1}</del>
+          <del className="text-[#202224] mr-3">{course.price * 2.1}</del>
           <span className="text-green-500 font-poppins">₹{course.price}</span>
         </div>
       </div>

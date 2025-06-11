@@ -63,13 +63,20 @@ const Alllessons = ({ courseId, onSubmit }) => {
 
     const res = await dispatch(craetelesson(formData));
     toast.success(res.message || "Lesson created successfully");
+    setFormData({
+      course: "",
+      title: "",
+      content: "",
+      videoUrl: "",
+      duration: "",
+    });
     console.log(res.payload);
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-xl mx-auto p-4 bg-white shadow rounded-lg space-y-4"
+      className="max-w-xl text-black mx-auto p-4 bg-white shadow rounded-lg space-y-4"
     >
       <h2 className="text-xl font-bold">Add New Lesson</h2>
 
