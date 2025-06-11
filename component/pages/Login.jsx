@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { loginuser } from "@/redux/slice/auth-slice";
@@ -21,25 +21,24 @@ const Login = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = formData;
 
     if (email && password) {
-      dispatch(loginuser(formData));
-      const token = Cookies.get("token");
-      console.log("Token of techbin:", token);
-      if (!token) {
-        toast.error("Login failed. Please check your credentials.");
-        return;
-      } else {
-        toast.success("Login successful!");
-      }
+      let res = await dispatch(loginuser(formData));
+      console.log(res.payload.message);
+      toast.success(res.payload.message);
+
       router.push("/");
     } else {
       seterror("Please enter both email and password.");
     }
   };
+
+  // useEffect(() => {
+  //   handleLogin();
+  // });
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
