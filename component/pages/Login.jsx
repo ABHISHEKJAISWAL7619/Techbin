@@ -10,8 +10,8 @@ import toast from "react-hot-toast";
 const Login = () => {
   const [error, seterror] = useState();
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "rishav00015@gmail.com",
+    password: "123456",
   });
   const router = useRouter();
   const dispatch = useDispatch();
